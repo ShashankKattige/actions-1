@@ -16,4 +16,8 @@ jobs:
 
         - name: Read Files
           run : cat README.md
+        - name: Install cowsay program
+          run : cowsay -f dragon "Run for cover I am Dragon" >> dragon.txt
 
+        - name: test exist file
+          run: cat dragon.txt

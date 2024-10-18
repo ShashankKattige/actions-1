@@ -11,16 +11,11 @@ jobs:
         - name: Welcome message
           run : echo "welcome for first time"
 
-        - name: Download Ascii
-          run: sudo apt-get install cowsay -y
+        
          
         - name: list files
           run : ls
 
-        - name: Read Files
-          run : cat README.md
-        - name: Install cowsay program
-          run : cowsay -f dragon "Run for cover I am Dragon" >> dragon.txt
+        - name: Execute Shell Script
+          run : ./asci-script.sh
 
-        - name: test exist file
-          run: cat dragon.txt

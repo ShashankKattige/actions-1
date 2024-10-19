@@ -3,21 +3,34 @@ name: genrate-ascii
 on: push
 
 jobs:
-    first_job:
+    build_job:
         runs-on: ubuntu-latest
         steps:
-        - name: CheckoutRepo
-          uses: actions/checkout@v4
-        - name: Welcome message
-          run : echo "welcome for first time"
+        - name: Install cowsay program
+          run: sudo apt-get install cowsay -y
 
+        - name: execute cowsay program
+          run: cowsay -f dragon "Run for cover , i am dragon" >> dragon.txt
+
+        - name: sleep
+          run : sleep 30 
+
+
+    test_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: sleep for 10 sec
+          run : sleep 10
+
+        - name: test file if exist
+          run: grep -i "dragon" dragon.txt
+
+    deploy_job: 
+        runs-on: ubuntu-latest
+        steps:
+        - name: read file
+          run: cat dragon.txt
         
-         
-        - name: list files
-          run : ls
-
-        - name: Execute Shell Script
-          run : | 
-            chmod +x asci-script.sh
-            ./asci-script.sh
-
+        - name: deploy
+          run: echo deploying
+        
